@@ -5,6 +5,29 @@ body {
     height: 100vh;
 }
 
+/* APP LAYOUT */
+#app {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 🔥 ВАЖНО: feed = прокручиваемая зона */
+#feed {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* 🔥 ЛЕНТА */
+#posts {
+    flex: 1;
+    overflow-y: auto;
+    padding: 10px;
+}
+
+/* AUTH */
 .container {
     display: flex;
     justify-content: center;
@@ -28,20 +51,12 @@ input {
     border-radius: 10px;
     border: none;
     background: #e5e5e5;
-    box-sizing: border-box; /* 🔥 ВАЖНО */
+    box-sizing: border-box;
 }
 
-/* ===== PASSWORD ===== */
+/* PASSWORD */
 .pass-box {
     position: relative;
-    width: 100%;
-}
-
-.pass-box input {
-    width: 100%;
-    padding: 12px;
-    padding-right: 40px;
-    box-sizing: border-box; /* 🔥 фикс ширины */
 }
 
 .eye-btn {
@@ -50,10 +65,9 @@ input {
     top: 50%;
     transform: translateY(-50%);
     cursor: pointer;
-    font-size: 18px;
 }
 
-/* ===== BUTTONS ===== */
+/* BUTTONS */
 .main-btn {
     width: 100%;
     padding: 12px;
@@ -74,13 +88,9 @@ input {
     background: transparent;
     border: 2px solid white;
     color: white;
-    cursor: pointer;
 }
 
-.text {
-    margin-top: 10px;
-}
-
+/* TOPBAR */
 .topbar {
     display: flex;
     justify-content: space-between;
@@ -88,18 +98,29 @@ input {
     background: rgba(0,0,0,0.3);
 }
 
+/* POST BOX (фиксированная зона ввода) */
 .postBox {
-    width: 300px;
-    margin: 20px auto;
-    text-align: center;
+    padding: 10px;
+    background: rgba(0,0,0,0.2);
+    display: flex;
+    gap: 10px;
 }
 
+.postBox input {
+    flex: 1;
+}
+
+.postBox button {
+    padding: 10px;
+}
+
+/* POSTS */
 .post {
     background: rgba(255,255,255,0.1);
     padding: 10px;
-    margin: 10px auto;
-    width: 300px;
+    margin: 10px 0;
     border-radius: 10px;
+    color: white;
 }
 
 .post-user {

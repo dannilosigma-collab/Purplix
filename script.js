@@ -2,7 +2,7 @@
 
 let currentUser = null;
 
-/* ===== FIREBASE CONFIG ===== */
+/* Firebase */
 const firebaseConfig = {
   apiKey: "AIzaSyAXswTNDekfx61QK7QR6tnaRxkEmB26t0M",
   authDomain: "purplix-99a2a.firebaseapp.com",
@@ -13,11 +13,10 @@ const firebaseConfig = {
   measurementId: "G-ZX4NWB4CEW"
 };
 
-/* ===== INIT FIREBASE ===== */
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 
-/* ===== ELEMENTS ===== */
+/* Elements */
 const auth = document.getElementById("auth");
 const app = document.getElementById("app");
 
@@ -33,14 +32,13 @@ const user = document.getElementById("user");
 const postsDiv = document.getElementById("posts");
 const postText = document.getElementById("postText");
 
-/* ===== REGISTER ===== */
+/* REGISTER */
 function register() {
     const name = regName.value.trim();
     const pass = regPass.value.trim();
 
     if (!name || !pass) return alert("Заполни поля!");
 
-    // сохраняем пользователя (тестово)
     db.collection("users").add({
         username: name,
         password: pass
@@ -50,7 +48,7 @@ function register() {
     openApp(name);
 }
 
-/* ===== LOGIN ===== */
+/* LOGIN */
 function login() {
     const name = loginName.value.trim();
     const pass = loginPass.value.trim();
@@ -61,7 +59,7 @@ function login() {
     openApp(name);
 }
 
-/* ===== OPEN APP ===== */
+/* OPEN APP */
 function openApp(name) {
     currentUser = name;
 
@@ -73,7 +71,7 @@ function openApp(name) {
     listenPosts();
 }
 
-/* ===== ADD POST ===== */
+/* ADD POST */
 function addPost() {
     const text = postText.value.trim();
     if (!text) return;
@@ -87,7 +85,7 @@ function addPost() {
     postText.value = "";
 }
 
-/* ===== LIVE POSTS ===== */
+/* LIVE POSTS */
 function listenPosts() {
     db.collection("posts")
         .orderBy("time", "desc")
@@ -104,10 +102,13 @@ function listenPosts() {
                     </div>
                 `;
             });
+
+            // 🔥 авто-скролл вниз (после обновления)
+            postsDiv.scrollTop = 0;
         });
 }
 
-/* ===== UI ===== */
+/* UI */
 function showRegister() {
     loginBox.style.display = "none";
     registerBox.style.display = "block";
@@ -123,7 +124,7 @@ function logout() {
     location.reload();
 }
 
-/* ===== PASSWORD TOGGLE ===== */
+/* PASSWORD */
 function togglePass(id, el) {
     const input = document.getElementById(id);
 
@@ -136,7 +137,7 @@ function togglePass(id, el) {
     }
 }
 
-/* ===== INIT ===== */
+/* INIT */
 window.onload = function () {
     document.getElementById("loginBtn").onclick = login;
     document.getElementById("regBtn").onclick = register;

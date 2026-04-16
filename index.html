@@ -5,6 +5,7 @@
 <title>Purplix</title>
 <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
 <div class="container">
@@ -57,18 +58,23 @@
             </div>
         </div>
 
-        <div class="postBox">
-            <input id="postText" placeholder="Что нового?">
-            <button id="postBtn">Опубликовать</button>
-        </div>
+        <!-- 🔥 ЛЕНТА + INPUT ОБЩИЙ КОНТЕЙНЕР -->
+        <div id="feed">
 
-        <div id="posts"></div>
+            <div id="posts"></div>
+
+            <div class="postBox">
+                <input id="postText" placeholder="Что нового?">
+                <button id="postBtn">Опубликовать</button>
+            </div>
+
+        </div>
 
     </div>
 
 </div>
 
-<!-- 🔥 FIREBASE (ВАЖНО) -->
+<!-- FIREBASE -->
 <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
 

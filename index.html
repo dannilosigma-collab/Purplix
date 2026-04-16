@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Purplix</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <!-- AUTH -->
+    <div id="auth">
+
+        <!-- LOGIN -->
+        <div id="loginBox" class="card">
+            <h2>Вход</h2>
+
+            <input id="loginName" placeholder="Имя">
+
+            <div class="pass-box">
+                <input id="loginPass" type="password" placeholder="Пароль">
+                <span class="eye-btn" onclick="togglePass('loginPass', this)">🔒</span>
+            </div>
+
+            <button id="loginBtn" class="main-btn">Войти</button>
+
+            <p class="text">Нет аккаунта?</p>
+            <button id="goRegister" class="outline-btn">Регистрация</button>
+        </div>
+
+        <!-- REGISTER -->
+        <div id="registerBox" class="card" style="display:none;">
+            <h2>Регистрация</h2>
+
+            <input id="regName" placeholder="Имя">
+
+            <div class="pass-box">
+                <input id="regPass" type="password" placeholder="Пароль">
+                <span class="eye-btn" onclick="togglePass('regPass', this)">🔒</span>
+            </div>
+
+            <button id="regBtn" class="main-btn">Создать аккаунт</button>
+
+            <p class="text">Уже есть аккаунт?</p>
+            <button id="goLogin" class="outline-btn">Войти</button>
+        </div>
+
+    </div>
+
+    <!-- APP -->
+    <div id="app" style="display:none;">
+
+        <div class="topbar">
+            <h2>Purplix</h2>
+            <div>
+                <span id="user"></span>
+                <button id="logoutBtn">Выйти</button>
+            </div>
+        </div>
+
+        <div class="postBox">
+            <input id="postText" placeholder="Что нового?">
+            <button id="postBtn">Опубликовать</button>
+        </div>
+
+        <div id="posts"></div>
+
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

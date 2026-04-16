@@ -1,0 +1,107 @@
+body {
+    margin: 0;
+    font-family: Arial;
+    background: linear-gradient(135deg, #3b0764, #7e22ce);
+    height: 100vh;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.card {
+    background: rgba(40, 0, 80, 0.85);
+    padding: 40px;
+    border-radius: 20px;
+    width: 300px;
+    text-align: center;
+    color: white;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    border-radius: 10px;
+    border: none;
+    background: #e5e5e5;
+    box-sizing: border-box; /* 🔥 ВАЖНО */
+}
+
+/* ===== PASSWORD ===== */
+.pass-box {
+    position: relative;
+    width: 100%;
+}
+
+.pass-box input {
+    width: 100%;
+    padding: 12px;
+    padding-right: 40px;
+    box-sizing: border-box; /* 🔥 фикс ширины */
+}
+
+.eye-btn {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 18px;
+}
+
+/* ===== BUTTONS ===== */
+.main-btn {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(90deg, #9333ea, #c084fc);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.outline-btn {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    border-radius: 10px;
+    background: transparent;
+    border: 2px solid white;
+    color: white;
+    cursor: pointer;
+}
+
+.text {
+    margin-top: 10px;
+}
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    background: rgba(0,0,0,0.3);
+}
+
+.postBox {
+    width: 300px;
+    margin: 20px auto;
+    text-align: center;
+}
+
+.post {
+    background: rgba(255,255,255,0.1);
+    padding: 10px;
+    margin: 10px auto;
+    width: 300px;
+    border-radius: 10px;
+}
+
+.post-user {
+    font-weight: bold;
+}

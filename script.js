@@ -2,16 +2,18 @@
 
 let currentUser = null;
 
-/* ===== FIREBASE ===== */
+/* ===== FIREBASE CONFIG ===== */
 const firebaseConfig = {
-    apiKey: "ВСТАВЬ_СЮДА",
-    authDomain: "ВСТАВЬ_СЮДА",
-    projectId: "ВСТАВЬ_СЮДА",
-    storageBucket: "ВСТАВЬ_СЮДА",
-    messagingSenderId: "ВСТАВЬ_СЮДА",
-    appId: "ВСТАВЬ_СЮДА"
+  apiKey: "AIzaSyAXswTNDekfx61QK7QR6tnaRxkEmB26t0M",
+  authDomain: "purplix-99a2a.firebaseapp.com",
+  projectId: "purplix-99a2a",
+  storageBucket: "purplix-99a2a.firebasestorage.app",
+  messagingSenderId: "995682402985",
+  appId: "1:995682402985:web:0d87182acb137953591fb8",
+  measurementId: "G-ZX4NWB4CEW"
 };
 
+/* ===== INIT FIREBASE ===== */
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 
@@ -37,6 +39,12 @@ function register() {
     const pass = regPass.value.trim();
 
     if (!name || !pass) return alert("Заполни поля!");
+
+    // сохраняем пользователя (тестово)
+    db.collection("users").add({
+        username: name,
+        password: pass
+    });
 
     localStorage.setItem("currentUser", name);
     openApp(name);
@@ -71,8 +79,8 @@ function addPost() {
     if (!text) return;
 
     db.collection("posts").add({
+        post: text,
         user: currentUser,
-        text: text,
         time: Date.now()
     });
 
@@ -92,7 +100,7 @@ function listenPosts() {
                 postsDiv.innerHTML += `
                     <div class="post">
                         <div class="post-user">${p.user}</div>
-                        <div>${p.text}</div>
+                        <div>${p.post}</div>
                     </div>
                 `;
             });
@@ -115,7 +123,7 @@ function logout() {
     location.reload();
 }
 
-/* ===== PASSWORD ===== */
+/* ===== PASSWORD TOGGLE ===== */
 function togglePass(id, el) {
     const input = document.getElementById(id);
 

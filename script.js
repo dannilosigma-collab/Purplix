@@ -2,7 +2,7 @@
 
 let currentUser = null;
 
-/* Firebase */
+/* FIREBASE */
 const firebaseConfig = {
   apiKey: "AIzaSyAXswTNDekfx61QK7QR6tnaRxkEmB26t0M",
   authDomain: "purplix-99a2a.firebaseapp.com",
@@ -16,7 +16,7 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 
-/* Elements */
+/* ELEMENTS */
 const auth = document.getElementById("auth");
 const app = document.getElementById("app");
 
@@ -51,9 +51,8 @@ function register() {
 /* LOGIN */
 function login() {
     const name = loginName.value.trim();
-    const pass = loginPass.value.trim();
 
-    if (!name || !pass) return alert("Ошибка входа!");
+    if (!name) return alert("Ошибка входа!");
 
     localStorage.setItem("currentUser", name);
     openApp(name);
@@ -64,7 +63,7 @@ function openApp(name) {
     currentUser = name;
 
     auth.style.display = "none";
-    app.style.display = "block";
+    app.style.display = "flex";
 
     user.innerText = name;
 
@@ -96,14 +95,13 @@ function listenPosts() {
                 const p = doc.data();
 
                 postsDiv.innerHTML += `
-                    <div class="post">
-                        <div class="post-user">${p.user}</div>
-                        <div>${p.post}</div>
-                    </div>
-                `;
+    <div class="post">
+        <div class="post-user">${p.user}</div>
+        <span>${p.post}</span>
+    </div>
+`;
             });
 
-            // 🔥 авто-скролл вниз (после обновления)
             postsDiv.scrollTop = 0;
         });
 }
@@ -128,25 +126,20 @@ function logout() {
 function togglePass(id, el) {
     const input = document.getElementById(id);
 
-    if (input.type === "password") {
-        input.type = "text";
-        el.textContent = "🔓";
-    } else {
-        input.type = "password";
-        el.textContent = "🔒";
-    }
+    input.type = input.type === "password" ? "text" : "password";
+    el.textContent = input.type === "text" ? "🔓" : "🔒";
 }
 
 /* INIT */
 window.onload = function () {
-    document.getElementById("loginBtn").onclick = login;
-    document.getElementById("regBtn").onclick = register;
+    loginBtn.onclick = login;
+    regBtn.onclick = register;
 
-    document.getElementById("goRegister").onclick = showRegister;
-    document.getElementById("goLogin").onclick = showLogin;
+    goRegister.onclick = showRegister;
+    goLogin.onclick = showLogin;
 
-    document.getElementById("logoutBtn").onclick = logout;
-    document.getElementById("postBtn").onclick = addPost;
+    logoutBtn.onclick = logout;
+    postBtn.onclick = addPost;
 
     const saved = localStorage.getItem("currentUser");
     if (saved) openApp(saved);

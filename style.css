@@ -135,7 +135,8 @@ input {
   border: 1px solid rgba(255,255,255,0.15);
   border-radius: 10px;
   word-break: break-word;
-  color: red;
+  justify-content: center;
+  align-items: center;
 }
 
 .post-user {

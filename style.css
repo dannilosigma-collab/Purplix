@@ -1,6 +1,9 @@
 html, body {
   height: 100%;
   margin: 0;
+
+  /* ВАЖНО: нормальный скролл страницы */
+  overflow-y: auto;
 }
 
 body {
@@ -12,12 +15,15 @@ body {
 
 /* CONTAINER */
 .container {
+  min-height: 100vh;
+}
+
+/* AUTH */
+#auth {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  padding: 15px;
-  box-sizing: border-box;
 }
 
 /* CARD */
@@ -80,78 +86,130 @@ input {
   color: white;
 }
 
-.text {
-  margin-top: 10px;
-}
-
 /* APP */
 #app {
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
 /* TOPBAR */
 .topbar {
+  margin-left: 250px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 15px;
   background: rgba(0,0,0,0.3);
-  flex-wrap: wrap;
-  gap: 10px;
 }
 
-.topbar-right {
+#logoutBtn {
+  border: none;
+  border-radius: 10px;
+
+  padding: 10px 14px;
+
+  background: rgba(255, 80, 120, 0.15);
+  color: white;
+
+  cursor: pointer;
+
+  font-weight: 600;
+
+  transition: all 0.2s ease;
+}
+
+/* hover */
+#logoutBtn:hover {
+  background: rgba(255, 80, 120, 0.35);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(255, 80, 120, 0.25);
+}
+
+/* click */
+#logoutBtn:active {
+  transform: translateY(0);
+}
+
+/* MAIN */
+.main {
   display: flex;
-  gap: 10px;
-  align-items: center;
+  min-height: 100vh;
 }
 
-/* FEED */
+/* SIDEBAR */
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 220px;
+  height: 100vh;
+
+  background: rgba(255,255,255,0.05);
+  color: white;
+  padding: 15px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sidebar button {
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.1);
+  color: white;
+  cursor: pointer;
+  text-align: left;
+}
+
+.sidebar button:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+/* FEED (БЕЗ ЛОКАЛЬНОГО SCROLL — ТЕПЕРЬ BODY SCROLL) */
 #feed {
+  margin-left: 220px;
+
   flex: 1;
+
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  padding: 20px;
 }
 
 /* POSTS */
 #posts {
   width: 100%;
   max-width: 600px;
-  flex: 1;
-  padding: 10px;
-  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 /* POST */
 .post {
   width: 100%;
-  max-width: 540px;
-  margin: 10px 0;
   padding: 15px;
+
   background: rgba(255,255,255,0.05);
   border: 1px solid rgba(255,255,255,0.15);
   border-radius: 10px;
-  word-break: break-word;
-  justify-content: center;
-  align-items: center;
 }
 
-.post-user {
-  font-weight: bold;
-  margin-bottom: 5px;
-}
-
-/* POST INPUT */
+/* POST BOX */
 .postBox {
   width: 100%;
   max-width: 600px;
-  padding: 10px;
+
   display: flex;
   gap: 10px;
-  box-sizing: border-box;
+
+  margin-top: 10px;
 }
 
 .postBox input {
@@ -167,22 +225,33 @@ input {
   cursor: pointer;
 }
 
-/* 📱 MOBILE */
-@media (max-width: 500px) {
-  .card {
-    padding: 15px;
-  }
-
-  .postBox {
-    flex-direction: column;
-  }
-
-  .postBox button {
-    width: 100%;
+/* MOBILE */
+@media (max-width: 700px) {
+  .sidebar {
+    display: none;
   }
 
   .topbar {
-    flex-direction: column;
-    align-items: flex-start;
+    margin-left: 0;
   }
+
+  #feed {
+    margin-left: 0;
+  }
+}
+button {
+  transition: all 0.25s ease;
+  position: relative;
+}
+
+/* hover — подъём + glow */
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(147, 51, 234, 0.35);
+}
+
+/* активное нажатие */
+button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(147, 51, 234, 0.2);
 }

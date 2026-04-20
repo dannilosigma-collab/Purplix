@@ -39,6 +39,11 @@ function register() {
 
     if (!name || !pass) return alert("Fill in all fields!");
 
+    // ✅ только цифры
+    if (!/^\d+$/.test(pass)) {
+        return alert("Password must contain only numbers!");
+    }
+
     db.collection("users").add({
         username: name,
         password: pass
@@ -54,6 +59,11 @@ function login() {
     const pass = loginPass.value.trim();
 
     if (!name || !pass) return alert("Login error!");
+
+    // ✅ только цифры
+    if (!/^\d+$/.test(pass)) {
+        return alert("Password must contain only numbers!");
+    }
 
     db.collection("users")
         .where("username", "==", name)

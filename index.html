@@ -17,10 +17,10 @@
         <div id="loginBox" class="card">
             <h2>Login</h2>
 
-            <input id="loginName" placeholder="Username">
+            <input id="loginName" placeholder="Username" maxlength="20">
 
             <div class="pass-box">
-                <input id="loginPass" type="password" placeholder="Password">
+                <input id="loginPass" type="password" placeholder="Password" inputmode="numeric" pattern="[0-9]*">
                 <span class="eye-btn" onclick="togglePass('loginPass', this)">🔒</span>
             </div>
 
@@ -33,10 +33,10 @@
         <div id="registerBox" class="card" style="display:none;">
             <h2>Register</h2>
 
-            <input id="regName" placeholder="Username">
+            <input id="regName" placeholder="Username" maxlength="20">
 
             <div class="pass-box">
-                <input id="regPass" type="password" placeholder="Password">
+                <input id="regPass" type="password" placeholder="Password" inputmode="numeric" pattern="[0-9]*">
                 <span class="eye-btn" onclick="togglePass('regPass', this)">🔒</span>
             </div>
 

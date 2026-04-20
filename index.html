@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,33 +17,33 @@
         <div id="loginBox" class="card">
             <h2>Login</h2>
 
-            <input id="loginName" placeholder="Name...">
+            <input id="loginName" placeholder="Username">
 
             <div class="pass-box">
-                <input id="loginPass" type="password" placeholder="Пароль">
+                <input id="loginPass" type="password" placeholder="Password">
                 <span class="eye-btn" onclick="togglePass('loginPass', this)">🔒</span>
             </div>
 
-            <button id="loginBtn" class="main-btn">Login</button>
+            <button id="loginBtn" class="main-btn">Log In</button>
 
-            <p class="text">No account?</p>
-            <button id="goRegister" class="outline-btn">Registration</button>
+            <p class="text">Don't have an account?</p>
+            <button id="goRegister" class="outline-btn">Register</button>
         </div>
 
         <div id="registerBox" class="card" style="display:none;">
-            <h2>Registration</h2>
+            <h2>Register</h2>
 
-            <input id="regName" placeholder="Name...">
+            <input id="regName" placeholder="Username">
 
             <div class="pass-box">
                 <input id="regPass" type="password" placeholder="Password">
                 <span class="eye-btn" onclick="togglePass('regPass', this)">🔒</span>
             </div>
 
-            <button id="regBtn" class="main-btn">Create account</button>
+            <button id="regBtn" class="main-btn">Create Account</button>
 
-            <p class="text">Already have an accoint?</p>
-            <button id="goLogin" class="outline-btn">Login</button>
+            <p class="text">Already have an account?</p>
+            <button id="goLogin" class="outline-btn">Log In</button>
         </div>
 
     </div>
@@ -55,7 +55,7 @@
             <h2>Purplix</h2>
             <div class="topbar-right">
                 <span id="user"></span>
-                <button id="logoutBtn">Log out</button>
+                <button id="logoutBtn">Log Out</button>
             </div>
         </div>
 <div class="main">
@@ -63,19 +63,19 @@
     <div class="sidebar">
         <h3>Menu</h3>
 
-        <button>Post (Кнопка не рабочяя)</button>
-		<button>Video (Кнопка не рабочяя)</button>
-		<button>Shorts (Кнопка не рабочяя)</button>
-        <button>Messages (Кнопка не рабочяя)</button>
-        <button>Setings (Кнопка не рабочяя)</button>
+        <button>Posts (Button not working)</button>
+        <button>Videos (Button not working)</button>
+        <button>Shorts (Button not working)</button>
+        <button>Messages (Button not working)</button>
+        <button>Settings (Button not working)</button>
     </div>
 
     <div id="feed">
         <div id="posts"></div>
 
         <div class="postBox">
-            <input id="postText" placeholder="Write...">
-            <button id="postBtn">Publish</button>
+            <input id="postText" placeholder="Write something...">
+            <button id="postBtn">Post</button>
         </div>
     </div>
 

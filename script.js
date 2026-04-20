@@ -37,7 +37,7 @@ function register() {
     const name = regName.value.trim();
     const pass = regPass.value.trim();
 
-    if (!name || !pass) return alert("Заполни поля!");
+    if (!name || !pass) return alert("Fill in all fields!");
 
     db.collection("users").add({
         username: name,
@@ -51,11 +51,26 @@ function register() {
 /* LOGIN */
 function login() {
     const name = loginName.value.trim();
+    const pass = loginPass.value.trim();
 
-    if (!name) return alert("Ошибка входа!");
+    if (!name || !pass) return alert("Login error!");
 
-    localStorage.setItem("currentUser", name);
-    openApp(name);
+    db.collection("users")
+        .where("username", "==", name)
+        .where("password", "==", pass)
+        .get()
+        .then(snapshot => {
+            if (snapshot.empty) {
+                alert("Invalid username or password!");
+            } else {
+                localStorage.setItem("currentUser", name);
+                openApp(name);
+            }
+        })
+        .catch(err => {
+            console.error(err);
+            alert("Database connection error");
+        });
 }
 
 /* OPEN APP */

@@ -1,8 +1,11 @@
+/* RESET */
+* {
+  box-sizing: border-box;
+}
+
 html, body {
   height: 100%;
   margin: 0;
-
-  /* ВАЖНО: нормальный скролл страницы */
   overflow-y: auto;
 }
 
@@ -64,17 +67,6 @@ input {
   cursor: pointer;
 }
 
-/* Remove built-in password eye in Edge */
-input[type="password"]::-ms-reveal,
-input[type="password"]::-ms-clear {
-    display: none;
-}
-
-/* Normalize appearance */
-input[type="password"] {
-    appearance: none;
-}
-
 /* BUTTONS */
 .main-btn, .outline-btn {
   width: 100%;
@@ -106,7 +98,7 @@ input[type="password"] {
 
 /* TOPBAR */
 .topbar {
-  margin-left: 250px;
+  margin-left: 220px; /* ВАЖНО — синхрон с sidebar */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -117,35 +109,22 @@ input[type="password"] {
 #logoutBtn {
   border: none;
   border-radius: 10px;
-
   padding: 10px 14px;
-
   background: rgba(255, 80, 120, 0.15);
   color: white;
-
   cursor: pointer;
-
   font-weight: 600;
-
   transition: all 0.2s ease;
 }
 
-/* hover */
 #logoutBtn:hover {
   background: rgba(255, 80, 120, 0.35);
   transform: translateY(-2px);
   box-shadow: 0 6px 18px rgba(255, 80, 120, 0.25);
 }
 
-/* click */
 #logoutBtn:active {
   transform: translateY(0);
-}
-
-/* MAIN */
-.main {
-  display: flex;
-  min-height: 100vh;
 }
 
 /* SIDEBAR */
@@ -156,47 +135,32 @@ input[type="password"] {
   width: 220px;
   height: 100vh;
 
-  background: rgba(255,255,255,0.05);
-  color: white;
+  background: linear-gradient(135deg, #5a1a8a, #9b4df0);
   padding: 15px;
 
   display: flex;
   flex-direction: column;
   gap: 20px;
+
+  transition: transform 0.3s ease;
+  z-index: 999;
 }
 
-.sidebar button {
-  padding: 10px;
-  border: none;
-  border-radius: 8px;
-  background: rgba(255,255,255,0.1);
-  color: white;
-  cursor: pointer;
-  text-align: left;
-}
-
-.sidebar button:hover {
-  background: rgba(255,255,255,0.2);
-}
-
-/* FEED (БЕЗ ЛОКАЛЬНОГО SCROLL — ТЕПЕРЬ BODY SCROLL) */
+/* FEED */
 #feed {
   margin-left: 220px;
-
   flex: 1;
+  padding: 20px;
 
   display: flex;
   flex-direction: column;
-  align-items: center;
-
-  padding: 20px;
+  align-items: center; /* центр без сдвигов */
 }
 
 /* POSTS */
 #posts {
   width: 100%;
   max-width: 600px;
-
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -206,21 +170,19 @@ input[type="password"] {
 .post {
   width: 100%;
   padding: 15px;
-
   background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.15);
   border-radius: 10px;
 }
 
-/* POST BOX */
+/* POST BOX — ВЕРНУЛ КАК БЫЛО */
 .postBox {
   width: 100%;
   max-width: 600px;
-
   display: flex;
   gap: 10px;
-
   margin-top: 10px;
+
+  align-self: center; /* ВОТ ЭТО ЧИНИТ */
 }
 
 .postBox input {
@@ -233,13 +195,46 @@ input[type="password"] {
   border-radius: 10px;
   background: #9333ea;
   color: white;
+}
+
+/* SIDEBAR BUTTONS */
+.sidebar button {
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.1);
+  color: white;
   cursor: pointer;
+  text-align: left;
+}
+
+/* SIDEBAR TOGGLE */
+.sidebar-toggle {
+  position: absolute;
+  top: 15px;
+  right: -25px;
+
+  width: 28px;
+  height: 45px;
+
+  border: none;
+  cursor: pointer;
+
+  background: rgba(0,0,0,0.6);
+  color: white;
+
+  border-radius: 0 10px 10px 0;
 }
 
 /* MOBILE */
 @media (max-width: 700px) {
+
   .sidebar {
-    display: none;
+    transform: translateX(-100%);
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
   }
 
   .topbar {
@@ -248,49 +243,12 @@ input[type="password"] {
 
   #feed {
     margin-left: 0;
+    justify-content: center;
+    padding: 10px;
   }
-}
-button {
-  transition: all 0.25s ease;
-  position: relative;
-}
 
-/* hover — подъём + glow */
-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(147, 51, 234, 0.35);
-}
+  #posts {
+    max-width: 100%;
+  }
 
-/* активное нажатие */
-button:active {
-  transform: translateY(0);
-  box-shadow: 0 2px 8px rgba(147, 51, 234, 0.2);
-}
-/* BUTTON FOR SIDEBAR TOGGLE */
-.sidebar-toggle {
-  position: absolute;
-  top: 15px;
-  right: -25px;
-
-  width: 25px;
-  height: 40px;
-
-  border: none;
-  cursor: pointer;
-
-  background: rgba(0,0,0,0.5);
-  color: white;
-
-  border-radius: 0 8px 8px 0;
-}
-
-/* hidden state */
-.sidebar.hidden {
-  transform: translateX(-100%);
-  transition: transform 0.3s ease;
-}
-
-/* smooth animation always */
-.sidebar {
-  transition: transform 0.3s ease;
 }

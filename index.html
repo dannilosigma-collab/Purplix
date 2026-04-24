@@ -20,7 +20,7 @@
             <input id="loginName" placeholder="Username" maxlength="20">
 
             <div class="pass-box">
-                <input id="loginPass" type="password" placeholder="Password" inputmode="numeric" pattern="[0-9]*">
+                <input id="loginPass" type="password" placeholder="Password">
                 <span class="eye-btn" onclick="togglePass('loginPass', this)">🔒</span>
             </div>
 
@@ -36,7 +36,7 @@
             <input id="regName" placeholder="Username" maxlength="20">
 
             <div class="pass-box">
-                <input id="regPass" type="password" placeholder="Password" inputmode="numeric" pattern="[0-9]*">
+                <input id="regPass" type="password" placeholder="Password">
                 <span class="eye-btn" onclick="togglePass('regPass', this)">🔒</span>
             </div>
 
@@ -61,29 +61,59 @@
 
         <div class="main">
 
+            <!-- SIDEBAR -->
             <div class="sidebar">
 
-                <!-- SIDEBAR TOGGLE BUTTON -->
                 <button id="sidebarToggle" class="sidebar-toggle">></button>
 
                 <h3>Menu</h3>
 
-                <button>Posts</button>
+                <button id="btnPosts">Posts</button>
                 <button>Videos</button>
                 <button>Shorts</button>
                 <button>Messages</button>
                 <button>Settings</button>
 
+                <!-- 👑 OWNER BUTTON -->
+                <button id="ownerBtn" style="display:none;">Owner Settings</button>
+
             </div>
 
+            <!-- FEED -->
             <div id="feed">
-                <div id="posts"></div>
 
-                <div class="postBox">
-                    <input id="postText" placeholder="Write something...">
-                    <button id="postBtn">Post</button>
-                </div>
-            </div>
+    <!-- POSTS TAB -->
+    <div id="postsTab">
+        <div id="posts"></div>
+
+        <div class="postBox">
+            <input id="postText" placeholder="Write something...">
+            <button id="postBtn">Post</button>
+        </div>
+    </div>
+
+    <!-- OWNER TAB -->
+    <div id="ownerTab" style="display:none;">
+  
+  <!-- ADD VERIFY -->
+  <div class="card">
+    <h3>Add Verification</h3>
+
+    <input id="searchUser" placeholder="Search user...">
+    <div id="userResults"></div>
+  </div>
+
+  <!-- REMOVE VERIFY -->
+  <div class="card" style="margin-top:15px;">
+    <h3>Remove Verification</h3>
+
+    <input id="removeUser" placeholder="Search user...">
+    <div id="removeResults"></div>
+  </div>
+
+</div>
+
+</div>
 
         </div>
 
@@ -91,9 +121,11 @@
 
 </div>
 
+<!-- FIREBASE -->
 <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
 
 <script src="script.js"></script>
+
 </body>
 </html>

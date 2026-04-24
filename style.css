@@ -47,7 +47,6 @@ input {
   border-radius: 10px;
   border: none;
   background: #e5e5e5;
-  box-sizing: border-box;
 }
 
 /* PASSWORD */
@@ -65,6 +64,17 @@ input {
   top: 50%;
   transform: translateY(-50%);
   cursor: pointer;
+}
+
+/* hide browser eye */
+input::-ms-reveal,
+input::-ms-clear {
+  display: none;
+}
+
+input::-webkit-credentials-auto-fill-button {
+  display: none !important;
+  visibility: hidden;
 }
 
 /* BUTTONS */
@@ -96,9 +106,15 @@ input {
   flex-direction: column;
 }
 
+.main {
+  display: flex;
+  width: 100%;
+  min-height: calc(100vh - 60px);
+}
+
 /* TOPBAR */
 .topbar {
-  margin-left: 220px; /* ВАЖНО — синхрон с sidebar */
+  margin-left: 220px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -106,6 +122,7 @@ input {
   background: rgba(0,0,0,0.3);
 }
 
+/* LOGOUT */
 #logoutBtn {
   border: none;
   border-radius: 10px;
@@ -114,17 +131,12 @@ input {
   color: white;
   cursor: pointer;
   font-weight: 600;
-  transition: all 0.2s ease;
+  transition: 0.2s;
 }
 
 #logoutBtn:hover {
   background: rgba(255, 80, 120, 0.35);
   transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(255, 80, 120, 0.25);
-}
-
-#logoutBtn:active {
-  transform: translateY(0);
 }
 
 /* SIDEBAR */
@@ -140,61 +152,10 @@ input {
 
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 12px;
 
   transition: transform 0.3s ease;
   z-index: 999;
-}
-
-/* FEED */
-#feed {
-  margin-left: 220px;
-  flex: 1;
-  padding: 20px;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* центр без сдвигов */
-}
-
-/* POSTS */
-#posts {
-  width: 100%;
-  max-width: 600px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-/* POST */
-.post {
-  width: 100%;
-  padding: 15px;
-  background: rgba(255,255,255,0.05);
-  border-radius: 10px;
-}
-
-/* POST BOX — ВЕРНУЛ КАК БЫЛО */
-.postBox {
-  width: 100%;
-  max-width: 600px;
-  display: flex;
-  gap: 10px;
-  margin-top: 10px;
-
-  align-self: center; /* ВОТ ЭТО ЧИНИТ */
-}
-
-.postBox input {
-  flex: 1;
-}
-
-.postBox button {
-  padding: 12px;
-  border: none;
-  border-radius: 10px;
-  background: #9333ea;
-  color: white;
 }
 
 /* SIDEBAR BUTTONS */
@@ -206,6 +167,120 @@ input {
   color: white;
   cursor: pointer;
   text-align: left;
+}
+
+.sidebar button:hover {
+  background: rgba(255,255,255,0.25);
+}
+
+/* OWNER */
+#ownerBtn {
+  background: rgba(255, 215, 0, 0.15);
+}
+
+/* FEED */
+#feed {
+  flex: 1;
+  margin-left: 220px;
+  padding: 20px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: calc(100% - 220px); /* ВОТ ГЛАВНЫЙ ФИКС */
+}
+
+/* POSTS */
+#posts {
+  width: 100%;
+  max-width: 1100px; /* ВАЖНО — широкая лента */
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#postsTab {
+  width: 100%;
+  max-width: 1100px;
+}
+
+/* POST */
+.post {
+  width: 100%;
+  padding: 15px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 10px;
+  transition: 0.2s;
+}
+
+.post:hover {
+  background: rgba(255,255,255,0.08);
+}
+
+/* POST USER */
+.post-user {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+/* POST BOX */
+.postBox {
+  width: 100%;
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.postBox input {
+  flex: 1;
+  min-width: 0;
+}
+
+/* ВАЖНО — НЕ трогаем дизайн кнопки */
+.postBox button {
+  padding: 12px 16px;
+  border: none;
+  border-radius: 10px;
+
+  background: linear-gradient(90deg, #9333ea, #c084fc);
+  color: white;
+
+  cursor: pointer;
+  font-weight: bold;
+
+  transition: 0.2s;
+}
+
+.postBox button:hover {
+  background: #a855f7;
+}
+
+/* OWNER TAB */
+#ownerTab {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+#ownerTab .card {
+  margin: 0 auto;
+}
+
+/* USER BUTTONS */
+.user-btn {
+  width: 100%;
+  padding: 10px;
+  margin-top: 6px;
+  border: none;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.08);
+  color: white;
+  cursor: pointer;
+}
+
+.user-btn:hover {
+  background: rgba(255,255,255,0.25);
 }
 
 /* SIDEBAR TOGGLE */
@@ -243,12 +318,13 @@ input {
 
   #feed {
     margin-left: 0;
-    justify-content: center;
+    width: 100%;
     padding: 10px;
   }
 
-  #posts {
+  #posts,
+  .postBox,
+  #ownerTab {
     max-width: 100%;
   }
-
 }

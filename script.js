@@ -154,6 +154,24 @@ function login() {
 }
 
 /* =========================
+   PASSWORD TOGGLE (🔒 / 🔓)
+========================= */
+
+function togglePass(id, el) {
+  const input = document.getElementById(id);
+
+  if (!input) return;
+
+  if (input.type === "password") {
+    input.type = "text";
+    el.textContent = "🔓";
+  } else {
+    input.type = "password";
+    el.textContent = "🔒";
+  }
+}
+
+/* =========================
    OPEN APP
 ========================= */
 function openApp(userData) {
